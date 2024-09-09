@@ -1,17 +1,19 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 3000;
 
-app.use('/js', express.static(path.join(__dirname, 'js')));
-app.use('/lang/messages/en',express.static(path.join(__dirname,'lang/messages/en')))
+app.use('/COMP4537/labs/0/js', express.static(path.join(__dirname, 'COMP4537/labs/0/js')));
+app.use('/COMP4537/labs/0/lang/messages/en', express.static(path.join(__dirname, 'COMP4537/labs/0/lang/messages/en')));
 
-// Route for the home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.redirect('/COMP4537/labs/0/');
 });
 
-// Start the server
+app.get('/COMP4537/labs/0/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'COMP4537/labs/0/index.html'));
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
